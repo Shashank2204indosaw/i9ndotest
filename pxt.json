@@ -1,19 +1,18 @@
 {
     "name": "i9ndotest",
-    "description": "",
+    "version": "0.0.1",
+    "description": "Custom blocks for Indosaw kit",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "pxt-indosaw-kit": "github:shashank2204indosaw/indosaw02#v0.0.1"
+        "servo": "*",
+        "neopixel": "github:microsoft/pxt-neopixel",
+        "microbit-dstemp": "github:bsiever/microbit-dstemp#v0.2.1"
     },
     "files": [
-        "main.blocks",
         "main.ts",
         "README.md"
-    ],
-    "testFiles": [
-        "test.ts"
     ],
     "targetVersions": {
         "target": "9.0.12",
@@ -22,5 +21,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
