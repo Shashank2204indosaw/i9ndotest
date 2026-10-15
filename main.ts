@@ -103,17 +103,7 @@ namespace mySignal {
         }
     }
 }
-//% color="#8E24AA" icon="\uf013" block="Device Configure"
-namespace DeviceConfig {
-    /**
-     * Configure any pin from P0 to P16 to HIGH or LOW
-     */
-    //% block="configure board pin %pin to state %state"
-    //% weight=95
-    export function setBoardPin(pin: BoardPin, state: PinState): void {
-        pins.digitalWritePin(pin as number, state);
-    }
-}
+
 
 //% color="#4CAF50" icon="\uf06c" block="Soil Sensor"
 namespace soilSensor {
