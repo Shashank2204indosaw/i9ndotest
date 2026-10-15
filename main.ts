@@ -256,7 +256,7 @@ namespace myServos {
     }
 }
 
-//% color="#E91E63" icon="\uf0eb" block="NeoPixel"
+//% color="#E91E63" icon="\uf0eb" block="My NeoPixel"
 namespace myNeoPixel {
     /**
      * Sets 5 NeoPixel LEDs on Pin P16 to RED
