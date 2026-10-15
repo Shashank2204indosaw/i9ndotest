@@ -102,43 +102,18 @@ namespace mySignal {
             basic.pause(500);
         }
     }
-// }
-// namespace mySignal {
-//     /**
-//      * Blinks an LED connected to Pin P9 for a chosen duration in seconds
-//      * @param duration seconds to blink the LED, eg: 5
-//      */
-//     //% block="blink signal on P9 for %duration seconds"
-//     //% duration.defl=5
-//     //% weight=100
-//     export function blinkP9ForSeconds(duration: number): void {
-//         let cycles = (duration * 1000) / 1000; // 500ms ON + 500ms OFF = 1000ms per full cycle
-//         for (let i = 0; i < cycles; i++) {
-//             pins.digitalWritePin(DigitalPin.P9, 1);
-//             basic.pause(500);
-//             pins.digitalWritePin(DigitalPin.P9, 0);
-//             basic.pause(500);
-//         }
-//     }
-
-//     /**
-//      * Blink any chosen pin from P0 to P16 for a specific duration in seconds
-//      * @param pin board pin to toggle
-//      * @param duration seconds to blink the pin, eg: 5
-//      */
-//     //% block="blink pin %pin for %duration seconds"
-//     //% duration.defl=5
-//     //% weight=90
-//     export function blinkBoardPinForSeconds(pin: BoardPin, duration: number): void {
-//         let cycles = (duration * 1000) / 1000;
-//         for (let i = 0; i < cycles; i++) {
-//             pins.digitalWritePin(pin as number, 1);
-//             basic.pause(500);
-//             pins.digitalWritePin(pin as number, 0);
-//             basic.pause(500);
-//         }
-//     }
-// }
+}
+//% color="#8E24AA" icon="\uf013" block="Device Configure"
+namespace DeviceConfig {
+    /**
+     * Configure any pin from P0 to P16 to HIGH or LOW
+     */
+    //% block="configure board pin %pin to state %state"
+    //% weight=95
+    export function setBoardPin(pin: BoardPin, state: PinState): void {
+        pins.digitalWritePin(pin as number, state);
+    }
+}
 
 //% color="#4CAF50" icon="\uf06c" block="Soil Sensor"
 namespace soilSensor {
