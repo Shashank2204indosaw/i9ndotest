@@ -169,6 +169,35 @@ namespace myServos {
     }
 
     /**
+     * Sets continuous servo speed on P7 as a percentage (-100% to 100%)
+     * @param speed speed percentage from -100 (Full CCW) to 100 (Full CW), eg: 50
+     */
+    //% block="set continuous servo P7 speed to %speed %%"
+    //% speed.min=-100 speed.max=100 speed.defl=0
+    //% weight=88
+    export function setServoSpeedPercentP7(speed: number): void {
+        // Clamp speed between -100 and 100
+        speed = Math.max(-100, Math.min(100, speed));
+        // Map -100..100 to pulse range 1000us..2000us (center 1500us)
+        let pulse = 1500 + (speed * 5);
+        pins.servoSetPulse(AnalogPin.P7, pulse);
+    }
+
+    /**
+     * Maps an input variable (e.g. sensor reading) to a servo angle on P7
+     * @param value the variable reading
+     * @param inMin minimum expected input value, eg: 0
+     * @param inMax maximum expected input value, eg: 1023
+     */
+    //% block="map variable %value| from (%inMin to %inMax) to servo P7 angle"
+    //% weight=87
+    export function mapVariableToServoP7(value: number, inMin: number, inMax: number): void {
+        let angle = Math.map(value, inMin, inMax, 0, 180);
+        angle = Math.max(0, Math.min(180, angle)); // Clamp within 0-180
+        pins.servoWritePin(AnalogPin.P7, angle);
+    }
+
+    /**
      * Sets the angle of a servo motor on any chosen pin (0 to 180 degrees)
      */
     //% block="set servo on pin %pin to %angle degrees"
