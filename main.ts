@@ -67,17 +67,18 @@ namespace DeviceConfig {
 }
 
 //% color="#FF5722" icon="\uf0eb" block="My Signal"
+//% color="#FF5722" icon="\uf0eb" block="My Signal"
 namespace mySignal {
     /**
-     * Blinks an LED connected to Pin P9 for a chosen duration in seconds
-     * @param duration seconds to blink the LED, eg: 5
+     * Blinks an LED connected to Pin P9 at default speed for a given duration in seconds
+     * @param duration total seconds to blink the LED, eg: 5
      */
     //% block="blink signal on P9 for %duration seconds"
     //% duration.defl=5
     //% weight=100
     export function blinkP9ForSeconds(duration: number): void {
-        let cycles = (duration * 1000) / 1000; // 500ms ON + 500ms OFF = 1000ms per full cycle
-        for (let i = 0; i < cycles; i++) {
+        // Keep 500ms ON / 500ms OFF speed constant (1 full cycle = 1 second)
+        for (let i = 0; i < duration; i++) {
             pins.digitalWritePin(DigitalPin.P9, 1);
             basic.pause(500);
             pins.digitalWritePin(DigitalPin.P9, 0);
@@ -86,23 +87,58 @@ namespace mySignal {
     }
 
     /**
-     * Blink any chosen pin from P0 to P16 for a specific duration in seconds
+     * Blinks any chosen board pin at default speed for a given duration in seconds
      * @param pin board pin to toggle
-     * @param duration seconds to blink the pin, eg: 5
+     * @param duration total seconds to blink the pin, eg: 5
      */
     //% block="blink pin %pin for %duration seconds"
     //% duration.defl=5
     //% weight=90
     export function blinkBoardPinForSeconds(pin: BoardPin, duration: number): void {
-        let cycles = (duration * 1000) / 1000;
-        for (let i = 0; i < cycles; i++) {
+        for (let i = 0; i < duration; i++) {
             pins.digitalWritePin(pin as number, 1);
             basic.pause(500);
             pins.digitalWritePin(pin as number, 0);
             basic.pause(500);
         }
     }
-}
+// }
+// namespace mySignal {
+//     /**
+//      * Blinks an LED connected to Pin P9 for a chosen duration in seconds
+//      * @param duration seconds to blink the LED, eg: 5
+//      */
+//     //% block="blink signal on P9 for %duration seconds"
+//     //% duration.defl=5
+//     //% weight=100
+//     export function blinkP9ForSeconds(duration: number): void {
+//         let cycles = (duration * 1000) / 1000; // 500ms ON + 500ms OFF = 1000ms per full cycle
+//         for (let i = 0; i < cycles; i++) {
+//             pins.digitalWritePin(DigitalPin.P9, 1);
+//             basic.pause(500);
+//             pins.digitalWritePin(DigitalPin.P9, 0);
+//             basic.pause(500);
+//         }
+//     }
+
+//     /**
+//      * Blink any chosen pin from P0 to P16 for a specific duration in seconds
+//      * @param pin board pin to toggle
+//      * @param duration seconds to blink the pin, eg: 5
+//      */
+//     //% block="blink pin %pin for %duration seconds"
+//     //% duration.defl=5
+//     //% weight=90
+//     export function blinkBoardPinForSeconds(pin: BoardPin, duration: number): void {
+//         let cycles = (duration * 1000) / 1000;
+//         for (let i = 0; i < cycles; i++) {
+//             pins.digitalWritePin(pin as number, 1);
+//             basic.pause(500);
+//             pins.digitalWritePin(pin as number, 0);
+//             basic.pause(500);
+//         }
+//     }
+// }
 
 //% color="#4CAF50" icon="\uf06c" block="Soil Sensor"
 namespace soilSensor {
