@@ -144,15 +144,6 @@ namespace soilSensor {
     }
 }
 
-//% color="#1E88E5" icon="\uf2db" block="My Motors"
-namespace myMotors {
-    //% block="stop all motors"
-    export function stopMotors(): void {
-        pins.digitalWritePin(DigitalPin.P0, 0);
-        pins.digitalWritePin(DigitalPin.P1, 0);
-    }
-}
-
 //% color="#009688" icon="\uf085" block="My Servos"
 namespace myServos {
     /**
