@@ -204,9 +204,9 @@ namespace myServos {
     //% angle.min=0 angle.max=180
     //% angle.defl=90
     //% weight=90
-    export function setServoPin(pin: BoardPin, angle: number): void {
-        pins.servoWritePin(pin as number, angle);
-    }
+    // export function setServoPin(pin: BoardPin, angle: number): void {
+    //     pins.servoWritePin(pin as number, angle);
+    // }
 
     /**
      * Stops driving the servo on Pin P7 (turns off PWM signal to save power)
@@ -222,9 +222,9 @@ namespace myServos {
      */
     //% block="stop servo on pin %pin"
     //% weight=80
-    export function stopServoPin(pin: BoardPin): void {
-        pins.servoSetPulse(pin as number, 0);
-    }
+    // export function stopServoPin(pin: BoardPin): void {
+    //     pins.servoSetPulse(pin as number, 0);
+    // }
 
     /**
      * Controls continuous rotation servo speed/direction on Pin P7 using pulse width (us)
@@ -232,9 +232,9 @@ namespace myServos {
     //% block="set continuous servo on P7 pulse %pulse µs"
     //% pulse.defl=1520
     //% weight=95
-    export function setServoPulseP7(pulse: number): void {
-        pins.servoSetPulse(AnalogPin.P7, pulse);
-    }
+    // export function setServoPulseP7(pulse: number): void {
+    //     pins.servoSetPulse(AnalogPin.P7, pulse);
+    // }
 
     /**
      * Controls continuous rotation servo speed/direction on any pin using pulse width (us)
@@ -242,9 +242,9 @@ namespace myServos {
     //% block="set continuous servo on pin %pin pulse %pulse µs"
     //% pulse.defl=1520
     //% weight=90
-    export function setServoPulsePin(pin: BoardPin, pulse: number): void {
-        pins.servoSetPulse(pin as number, pulse);
-    }
+    // export function setServoPulsePin(pin: BoardPin, pulse: number): void {
+    //     pins.servoSetPulse(pin as number, pulse);
+    // }
 
     /**
      * Sets continuous servo speed preset on Pin P7 (Slow CW, Stop, Slow CCW)
