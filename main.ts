@@ -44,6 +44,16 @@ enum PinState {
     Low = 0
 }
 
+
+enum ServoPinChoice {
+    //% block="P5"
+    P5 = 5,
+    //% block="P7"
+    P7 = 7,
+    //% block="P10"
+    P10 = 10
+}
+
 // Preset options for continuous rotation speeds
 enum ServoSpeed {
     //% block="Slow Clockwise"
@@ -157,6 +167,71 @@ namespace soilSensor {
 
 //% color="#009688" icon="\uf085" block="My Servos"
 namespace myServos {
+        
+    /**
+     * Set a servo angle on P5, P7 or P10.
+     */
+    //% block="set servo on %pin to %angle degrees"
+    //% pin.defl=ServoPinChoice.P7
+    //% angle.min=0 angle.max=180 angle.defl=90
+    //% weight=100
+    export function setServoSelectedPin(pin: ServoPinChoice, angle: number): void {
+        angle = Math.max(0, Math.min(180, angle));
+        pins.servoWritePin(pin as number, angle);
+    }
+    
+    /**
+     * Set continuous servo speed from -100% to 100%.
+     */
+    //% block="set continuous servo %pin speed to %speed %%"
+    //% pin.defl=ServoPinChoice.P7
+    //% speed.min=-100 speed.max=100 speed.defl=0
+    //% weight=99
+    export function setServoSpeedPercentSelectedPin(pin: ServoPinChoice, speed: number): void {
+        speed = Math.max(-100, Math.min(100, speed));
+        let pulse = 1500 + (speed * 5);
+        pins.servoSetPulse(pin as number, pulse);
+    }
+    
+    /**
+     * Map a variable to a servo angle.
+     */
+    //% block="map variable %value from (%inMin to %inMax) to servo %pin angle"
+    //% pin.defl=ServoPinChoice.P7
+    //% weight=98
+    export function mapVariableToServoSelectedPin(
+        value: number,
+        inMin: number,
+        inMax: number,
+        pin: ServoPinChoice
+    ): void {
+        if (inMin == inMax) return;
+    
+        let angle = Math.map(value, inMin, inMax, 0, 180);
+        angle = Math.max(0, Math.min(180, angle));
+        pins.servoWritePin(pin as number, angle);
+    }
+    
+    /**
+     * Stop the servo PWM signal on selected pin.
+     */
+    //% block="stop servo on %pin"
+    //% pin.defl=ServoPinChoice.P7
+    //% weight=97
+    export function stopServoSelectedPin(pin: ServoPinChoice): void {
+        pins.servoSetPulse(pin as number, 0);
+    }
+    
+    /**
+     * Set continuous servo preset state.
+     */
+    //% block="set continuous servo %pin state to %speed"
+    //% pin.defl=ServoPinChoice.P7
+    //% weight=96
+    export function setServoSpeedSelectedPin(pin: ServoPinChoice, speed: ServoSpeed): void {
+        pins.servoSetPulse(pin as number, speed);
+    }
+
     /**
      * Sets the angle of a servo motor connected to Pin P7 (0 to 180 degrees)
      */
