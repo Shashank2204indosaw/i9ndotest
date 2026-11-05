@@ -1,6 +1,6 @@
 {
     "name": "i9ndotest",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Custom blocks for Indosaw kit",
     "dependencies": {
         "core": "*",
