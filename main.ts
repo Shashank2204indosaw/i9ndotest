@@ -258,6 +258,23 @@ namespace myServos {
 
 //% color="#E91E63" icon="\uf0eb" block="My NeoPixel"
 namespace myNeoPixel {
+    
+    /**
+     * Sets 5 NeoPixel LEDs on P16 to the selected color.
+     */
+    //% block="turn 5 NeoPixels on P16 to %color"
+    //% color.defl=NeoPixelColors.Red
+    //% weight=96
+    export function showColorP16(color: NeoPixelColors): void {
+        let strip = neopixel.create(
+            DigitalPin.P16,
+            5,
+            NeoPixelMode.RGB
+        );
+    
+        strip.showColor(neopixel.colors(color));
+    }
+
     /**
      * Sets 5 NeoPixel LEDs on Pin P16 to RED
      */
