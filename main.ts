@@ -47,11 +47,13 @@ enum PinState {
 
 enum ServoPinChoice {
     //% block="P5"
-    P5 = 5,
+    P5 = AnalogPin.P5,
+
     //% block="P7"
-    P7 = 7,
+    P7 = AnalogPin.P7,
+
     //% block="P10"
-    P10 = 10
+    P10 = AnalogPin.P10
 }
 
 // Preset options for continuous rotation speeds
